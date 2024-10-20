@@ -1,0 +1,20 @@
+version: '3.2'
+
+services:
+    epts-reports:
+        build:
+            context: .
+        container_name: epts-reports
+        ports:
+            - "8000:8000"
+        networks: 
+            - network
+        volumes: 
+          - type: bind
+            source: /opt/epts-reports/data
+            target: /opt/epts-reports/data
+        restart: unless-stopped
+
+networks: 
+  network:
+    driver: bridge
